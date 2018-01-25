@@ -3,7 +3,7 @@
 /out/
 /target/
 /.idea
-/AKPCC.iml
+/thesis_impl.iml
 
 # Eclipse-environment-files
 /.classpath
