@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://xmlns.jcp.org/jsf">
+<ui:insert name="fmetadata"/>
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <h:outputStylesheet name="webjars/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <h:outputScript name="webjars/bootstrap/3.2.0/js/bootstrap.min.js"/>
+    <h:outputScript name="webjars/jquery/1.11.1/jquery.min.js"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/app.css"/>
+    <ui:insert name="css"/>
+    <title><ui:insert name="title"/></title>
+</h:head>
+
+<body>
+    <f:view>
+        <ui:include src="header.xhtml"/>
+
+        <div id="main" class="container-fluid">
+            <h2 class="page-header"><ui:insert name="page_title"/></h2>
+
+            <div id="content">
+                <ui:insert name="content"/>
+            </div>
+        </div>
+
+        <ui:include src="footer.xhtml"/>
+    </f:view>
+    <ui:insert name="script"/>
+    <script src="#{request.contextPath}/resources/javascript/app.js"/>
+</body>
+</html>

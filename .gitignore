@@ -1,0 +1,12 @@
+
+
+/out/
+/target/
+/.idea
+/AKPCC.iml
+
+# Eclipse-environment-files
+/.classpath
+/.project
+/.settings/
+/.tern-project
