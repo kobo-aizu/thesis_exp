@@ -39,16 +39,6 @@ public class CommentaryEntity{
     }
 
     @Basic
-    @Column(name = "event_id")
-    public Integer getEventId(){
-        return eventId;
-    }
-
-    public void setEventId(Integer eventId){
-        this.eventId = eventId;
-    }
-
-    @Basic
     @Column(name = "occurrence_time")
     public Timestamp getOccurrenceTime(){
         return occurrenceTime;
