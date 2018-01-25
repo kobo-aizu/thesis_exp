@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 @Named
 @ViewScoped
@@ -15,14 +16,14 @@ public class CommentaryShowBean implements Serializable{
     private String who;
     private int effort_total;
     private CommentaryEntity commentary;
-
+    private List<CommentaryEntity> commentaryList;
     @EJB
     CommentaryService commentaryService;
 
     public void show(){
         commentary=commentaryService.find(id);
         effort_total=commentaryService.SumEffortPoint(id,who);
-
+        commentaryList=commentaryService.findByIdAndWho(id,who);
     }
 
     public int getId(){
@@ -55,5 +56,13 @@ public class CommentaryShowBean implements Serializable{
 
     public void setCommentary(CommentaryEntity commentary){
         this.commentary = commentary;
+    }
+
+    public List<CommentaryEntity> getCommentaryList(){
+        return commentaryList;
+    }
+
+    public void setCommentaryList(List<CommentaryEntity> commentaryList){
+        this.commentaryList = commentaryList;
     }
 }

@@ -20,13 +20,22 @@ public class CommentaryService extends AbstractThesisService<CommentaryEntity>{
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<CommentaryEntity> cq = cb.createQuery(CommentaryEntity.class);
         Root<CommentaryEntity> model = cq.from(CommentaryEntity.class);
-        cq.where(cb.lessThanOrEqualTo(model.get("who"),who));
-        cq.where(cb.lessThanOrEqualTo(model.get("id"),id));
+        cq.where(cb.equal(model.get("who"),who),cb.lessThanOrEqualTo(model.get("id"),id));
         List<CommentaryEntity> resultList = getEntityManager().createQuery(cq).getResultList();
         for(CommentaryEntity commentary:resultList){
             num+=commentary.getFactByFactId().getEffortPoint();
         }
         return num;
+    }
+
+    public List<CommentaryEntity> findByIdAndWho(int id,String who){
+        int num=0;
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<CommentaryEntity> cq = cb.createQuery(CommentaryEntity.class);
+        Root<CommentaryEntity> model = cq.from(CommentaryEntity.class);
+        cq.where(cb.equal(model.get("who"),who),cb.lessThanOrEqualTo(model.get("id"),id));
+        return getEntityManager().createQuery(cq).getResultList();
+
     }
 
     public CommentaryEntity find(int id){
