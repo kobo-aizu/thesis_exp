@@ -7,13 +7,40 @@
       xmlns:p="http://xmlns.jcp.org/jsf">
 <body>
 <ui:composition template="/templates/layout.xhtml">
-    <ui:define name="page_title">#{res.title_knowledge_show}</ui:define>
+    <f:metadata>
+        <f:viewParam name="id" value="#{commentaryShowBean.id}" />
+        <f:viewParam name="who" value="#{commentaryShowBean.who}" />
+        <f:viewAction action="#{commentaryShowBean.show()}" />
+    </f:metadata>
+    <ui:define name="page_title">#{commentaryShowBean.effort_total}</ui:define>
     <ui:define name="content">
-        <f:metadata>
-            <f:viewParam name="id" value="#{commentaryShowBean.id}" />
-            <f:viewParam name="who" value="#{commentaryShowBean.who}" />
-            <f:viewAction action="#{commentaryShowBean.show()}" />
-        </f:metadata>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>who</th>
+                <th>action</th>
+                <th>result</th>
+                <th>occored_time</th>
+            </tr>
+            <tr>
+                <td>
+                    <h:outputText value="#{commentaryShowBean.commentary.id}"></h:outputText>
+                </td>
+                <td>
+                    <h:outputText value="#{commentaryShowBean.commentary.who}"></h:outputText>
+                </td>
+                <td>
+                    <h:outputText value="#{commentaryShowBean.commentary.factByFactId.action}"></h:outputText>
+                </td>
+                <td>
+                    <h:outputText value="#{commentaryShowBean.commentary.factByFactId.result}"></h:outputText>
+                </td>
+                <td>
+                    <h:outputText value="#{commentaryShowBean.commentary.occurrenceTime}"></h:outputText>
+                </td>
+            </tr>
+        </table>
+
 
     </ui:define>
 </ui:composition>

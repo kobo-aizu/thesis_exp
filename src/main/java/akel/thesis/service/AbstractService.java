@@ -1,7 +1,6 @@
-package akel.akpcc.service;
+package akel.thesis.service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public abstract class AbstractService<T> {

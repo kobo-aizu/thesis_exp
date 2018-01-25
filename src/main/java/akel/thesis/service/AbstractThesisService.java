@@ -1,4 +1,4 @@
-package akel.akpcc.service;
+package akel.thesis.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

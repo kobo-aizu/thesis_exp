@@ -1,0 +1,59 @@
+package akel.thesis.bean;
+
+import akel.thesis.model.CommentaryEntity;
+import akel.thesis.service.CommentaryService;
+
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+
+@Named
+@ViewScoped
+public class CommentaryShowBean implements Serializable{
+    private int id;
+    private String who;
+    private int effort_total;
+    private CommentaryEntity commentary;
+
+    @EJB
+    CommentaryService commentaryService;
+
+    public void show(){
+        commentary=commentaryService.find(id);
+        effort_total=commentaryService.SumEffortPoint(id,who);
+
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public String getWho(){
+        return who;
+    }
+
+    public void setWho(String who){
+        this.who = who;
+    }
+
+    public int getEffort_total(){
+        return effort_total;
+    }
+
+    public void setEffort_total(int effort_total){
+        this.effort_total = effort_total;
+    }
+
+    public CommentaryEntity getCommentary(){
+        return commentary;
+    }
+
+    public void setCommentary(CommentaryEntity commentary){
+        this.commentary = commentary;
+    }
+}

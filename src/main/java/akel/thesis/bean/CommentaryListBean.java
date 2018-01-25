@@ -1,7 +1,7 @@
-package akel.akpcc.bean;
+package akel.thesis.bean;
 
-import akel.akpcc.model.CommentaryEntity;
-import akel.akpcc.service.CommentaryService;
+import akel.thesis.model.CommentaryEntity;
+import akel.thesis.service.CommentaryService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;

@@ -1,4 +1,4 @@
-package akel.akpcc.model;
+package akel.thesis.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,9 +14,8 @@ import java.sql.Timestamp;
 public class CommentaryEntity{
     private Integer id;
     private String who;
-    private Integer eventId;
     private Timestamp occurrenceTime;
-    private EventEntity eventByEventId;
+    private FactEntity factByFactId;
 
     @Id
     @Column(name = "id")
@@ -57,7 +56,6 @@ public class CommentaryEntity{
 
         if(id != null ? !id.equals(that.id) : that.id != null) return false;
         if(who != null ? !who.equals(that.who) : that.who != null) return false;
-        if(eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if(occurrenceTime != null ? !occurrenceTime.equals(that.occurrenceTime) : that.occurrenceTime != null)
             return false;
 
@@ -68,18 +66,17 @@ public class CommentaryEntity{
     public int hashCode(){
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (who != null ? who.hashCode() : 0);
-        result = 31 * result + (eventId != null ? eventId.hashCode() : 0);
         result = 31 * result + (occurrenceTime != null ? occurrenceTime.hashCode() : 0);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "id", nullable = false)
-    public EventEntity getEventByEventId(){
-        return eventByEventId;
+    @JoinColumn(name = "fact_id", referencedColumnName = "id", nullable = false)
+    public FactEntity getFactByFactId(){
+        return factByFactId;
     }
 
-    public void setEventByEventId(EventEntity eventByEventId){
-        this.eventByEventId = eventByEventId;
+    public void setFactByFactId(FactEntity factByFactId){
+        this.factByFactId = factByFactId;
     }
 }

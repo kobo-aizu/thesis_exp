@@ -1,4 +1,4 @@
-package akel.akpcc.model;
+package akel.thesis.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,8 +8,8 @@ import javax.persistence.Basic;
 
 
 @Entity
-@Table(name = "event", schema = "thesis")
-public class EventEntity{
+@Table(name = "fact", schema = "thesis")
+public class FactEntity{
     private Integer id;
     private String action;
     private String result;
@@ -60,7 +60,7 @@ public class EventEntity{
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
 
-        EventEntity that = (EventEntity) o;
+        FactEntity that = (FactEntity) o;
 
         if(id != null ? !id.equals(that.id) : that.id != null) return false;
         if(action != null ? !action.equals(that.action) : that.action != null) return false;
