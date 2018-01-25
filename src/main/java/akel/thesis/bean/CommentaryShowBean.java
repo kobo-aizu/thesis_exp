@@ -17,6 +17,7 @@ public class CommentaryShowBean implements Serializable{
     private int effort_total;
     private CommentaryEntity commentary;
     private List<CommentaryEntity> commentaryList;
+
     @EJB
     CommentaryService commentaryService;
 
@@ -65,4 +66,12 @@ public class CommentaryShowBean implements Serializable{
     public void setCommentaryList(List<CommentaryEntity> commentaryList){
         this.commentaryList = commentaryList;
     }
+
+    public String makeCommentary(int effort_total){
+        if(effort_total<=2) return "It is still to come.";
+        else if(effort_total<=5) return "It can work harder!";
+        else if(effort_total<=10) return "It has a lot of challenges";
+        else return "It's doing the best!";
+    }
+
 }
