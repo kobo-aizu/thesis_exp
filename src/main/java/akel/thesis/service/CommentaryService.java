@@ -33,7 +33,7 @@ public class CommentaryService extends AbstractThesisService<CommentaryEntity>{
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<CommentaryEntity> cq = cb.createQuery(CommentaryEntity.class);
         Root<CommentaryEntity> model = cq.from(CommentaryEntity.class);
-        cq.where(cb.equal(model.get("who"),who),cb.lessThanOrEqualTo(model.get("id"),id));
+        cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id));
         return getEntityManager().createQuery(cq).getResultList();
 
     }
