@@ -22,8 +22,8 @@ public class EventService extends AbstractThesisService<EventEntity>{
         return getEntityManager().createQuery(cq).getSingleResult();
     }
 
+    //whoのそれまでのイベントを取得
     public List<EventEntity> findByIdAndWho(int id, String who){
-        int num=0;
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<EventEntity> cq = cb.createQuery(EventEntity.class);
         Root<EventEntity> model = cq.from(EventEntity.class);

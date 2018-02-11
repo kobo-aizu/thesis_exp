@@ -1,7 +1,7 @@
 package akel.thesis.bean;
 
-import akel.thesis.model.CommentaryEntity;
-import akel.thesis.service.CommentaryService;
+import akel.thesis.model.EventEntity;
+import akel.thesis.service.EventService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -11,20 +11,18 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class CommentaryShowBean implements Serializable{
+public class EventShowBean implements Serializable{
     private int id;
     private String who;
-    private int effort_total;
-    private CommentaryEntity commentary;
-    private List<CommentaryEntity> commentaryList;
+    private EventEntity event;
+    private List<EventEntity> eventList;
 
     @EJB
-    CommentaryService commentaryService;
+    EventService eventService;
 
     public void show(){
-        commentary=commentaryService.find(id);
-        effort_total=commentaryService.SumEffortPoint(id,who);
-        commentaryList=commentaryService.findByIdAndWho(id,who);
+        event=eventService.find(id);
+        eventList=eventService.findByIdAndWho(id,who);
     }
 
     public int getId(){
@@ -43,35 +41,20 @@ public class CommentaryShowBean implements Serializable{
         this.who = who;
     }
 
-    public int getEffort_total(){
-        return effort_total;
+    public EventEntity getEvent(){
+        return event;
     }
 
-    public void setEffort_total(int effort_total){
-        this.effort_total = effort_total;
+    public void setEvent(EventEntity event){
+        this.event = event;
     }
 
-    public CommentaryEntity getCommentary(){
-        return commentary;
+    public List<EventEntity> getEventList(){
+        return eventList;
     }
 
-    public void setCommentary(CommentaryEntity commentary){
-        this.commentary = commentary;
-    }
-
-    public List<CommentaryEntity> getCommentaryList(){
-        return commentaryList;
-    }
-
-    public void setCommentaryList(List<CommentaryEntity> commentaryList){
-        this.commentaryList = commentaryList;
-    }
-
-    public String makeCommentary(int effort_total){
-        if(effort_total<7) return "It is still to come.";
-        else if(effort_total<=15) return "It can work harder!";
-        else if(effort_total<=28) return "It has a lot of challenges";
-        else return "It's doing the best!";
+    public void setEventList(List<EventEntity> eventList){
+        this.eventList = eventList;
     }
 
 }

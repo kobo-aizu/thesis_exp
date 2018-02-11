@@ -1,7 +1,7 @@
 package akel.thesis.bean;
 
-import akel.thesis.model.CommentaryEntity;
-import akel.thesis.service.CommentaryService;
+import akel.thesis.model.EventEntity;
+import akel.thesis.service.EventService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -11,22 +11,22 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class CommentaryListBean implements Serializable{
+public class EventListBean implements Serializable{
     @EJB
-    CommentaryService commentaryService;
+    EventService eventService;
 
-    private List<CommentaryEntity> commentaryList;
+    private List<EventEntity> eventList;
 
 
-    public List<CommentaryEntity> getCommentaryList(){
-        return commentaryList;
+    public List<EventEntity> getEventList(){
+        return eventList;
     }
 
-    public void setCommentaryList(List<CommentaryEntity> commentaryList){
-        this.commentaryList = commentaryList;
+    public void setCommentaryList(List<EventEntity> commentaryList){
+        this.eventList = commentaryList;
     }
 
     public void init(){
-        commentaryList = commentaryService.findAll();
+        eventList = eventService.findAll();
     }
 }
