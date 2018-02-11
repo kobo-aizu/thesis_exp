@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Stateless
 public class EventService extends AbstractThesisService<EventEntity>{
@@ -19,5 +20,15 @@ public class EventService extends AbstractThesisService<EventEntity>{
         Root<EventEntity> model = cq.from(EventEntity.class);
         cq.where(cb.equal(model.get("id"),id));
         return getEntityManager().createQuery(cq).getSingleResult();
+    }
+
+    public List<EventEntity> findByIdAndWho(int id, String who){
+        int num=0;
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<EventEntity> cq = cb.createQuery(EventEntity.class);
+        Root<EventEntity> model = cq.from(EventEntity.class);
+        cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id));
+        return getEntityManager().createQuery(cq).getResultList();
+
     }
 }

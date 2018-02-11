@@ -2,8 +2,6 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="thesis-persistence-unit" transaction-type="JTA">
     <jta-data-source>java:/ThesisDS</jta-data-source>
-    <class>akel.thesis.model.CommentaryEntity</class>
-    <class>akel.thesis.model.FactEntity</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/thesis"/>
@@ -15,5 +13,6 @@
       <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/thesis"/>
       <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
     </properties>
+    <class>akel.thesis.model.EventEntity</class>
   </persistence-unit>
 </persistence>

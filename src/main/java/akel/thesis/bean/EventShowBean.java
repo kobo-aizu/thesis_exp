@@ -68,9 +68,9 @@ public class CommentaryShowBean implements Serializable{
     }
 
     public String makeCommentary(int effort_total){
-        if(effort_total<=2) return "It is still to come.";
-        else if(effort_total<=5) return "It can work harder!";
-        else if(effort_total<=10) return "It has a lot of challenges";
+        if(effort_total<7) return "It is still to come.";
+        else if(effort_total<=15) return "It can work harder!";
+        else if(effort_total<=28) return "It has a lot of challenges";
         else return "It's doing the best!";
     }
 
