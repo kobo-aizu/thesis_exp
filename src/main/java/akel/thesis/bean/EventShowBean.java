@@ -1,5 +1,6 @@
 package akel.thesis.bean;
 
+import akel.thesis.logic.Rule;
 import akel.thesis.model.EventEntity;
 import akel.thesis.service.EventService;
 
@@ -16,13 +17,15 @@ public class EventShowBean implements Serializable{
     private String who;
     private EventEntity event;
     private List<EventEntity> eventList;
-
+    private String commentary;
+    private Rule rule = new Rule();
     @EJB
-    EventService eventService;
+    private EventService eventService;
 
     public void show(){
         event=eventService.find(id);
         eventList=eventService.findByIdAndWho(id,who);
+        commentary=rule.genelateCommentary(event,eventList);
     }
 
     public int getId(){
@@ -57,4 +60,11 @@ public class EventShowBean implements Serializable{
         this.eventList = eventList;
     }
 
+    public String getCommentary(){
+        return commentary;
+    }
+
+    public void setCommentary(String commentary){
+        this.commentary = commentary;
+    }
 }
