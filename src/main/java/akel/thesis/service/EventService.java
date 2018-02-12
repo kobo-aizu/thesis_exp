@@ -27,7 +27,7 @@ public class EventService extends AbstractThesisService<EventEntity>{
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<EventEntity> cq = cb.createQuery(EventEntity.class);
         Root<EventEntity> model = cq.from(EventEntity.class);
-        cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id));
+        cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id)).orderBy(cb.desc(model.get("when")));
         return getEntityManager().createQuery(cq).getResultList();
 
     }
