@@ -29,12 +29,12 @@ public class Rule{
 
     //連続で正解している回数or連続で不正解の回数を数えるて解説として出力(Order)
     public String isContinuous(List<EventEntity> eventEntityList){
-        int continueCount=0;
+        int continueCount=1;
         int flag=0;
         int count=1;
         String commentary="";
 
-            if(eventEntityList.get(1).getWhat().equals("accept")){
+            if(eventEntityList.get(0).getWhat().equals("accept")){
                 for(EventEntity e : eventEntityList){
                     if(e.getWhat().equals("accept")){
                         count++;
@@ -45,17 +45,18 @@ public class Rule{
                 commentary = "This submit accepted!\nThis team correctly answered "+count+" questions in total.\n";
                 if(continueCount!=1) commentary+="And it Currently "+continueCount+" consecutive correct answers.";
             }else{
+                continueCount=0;
                 for(EventEntity e : eventEntityList){
                     if(!e.getWhat().equals("accept")){
                         if(flag == 0) continueCount++;
                     }else {
                         flag = 1;
-                        continueCount++;
+                        count++;
                     }
                 }
                 //Order and Frequency
                 commentary = "This submit accepted!\nThis team correctly answered "+count+" questions in total.\n";
-                if(continueCount!=1) commentary+="Before accept this problem, this team has been rejected "+continueCount+" times. it worked hard and got the accept answer!";
+                if(continueCount!=0) commentary+="Before accept this problem, this team has been rejected "+continueCount+" times. it worked hard and got the accept answer!";
 
             }
             return commentary;
