@@ -10,7 +10,7 @@
     <f:metadata>
         <f:viewAction action="#{eventListBean.init}"></f:viewAction>
     </f:metadata>
-    <ui:define name="page_title">Event Log</ui:define>
+    <ui:define name="page_title">Event Model List</ui:define>
     <ui:define name="content">
         <table class="table">
             <tr>
@@ -19,6 +19,7 @@
                 <th>how</th>
                 <th>what</th>
                 <th>when</th>
+                <th>why</th>
             </tr>
             <ui:repeat var="row" value="#{eventListBean.eventList}">
                 <h:form>
@@ -38,6 +39,9 @@
                         </td>
                         <td>
                             <h:outputText value="#{row.when}"></h:outputText>
+                        </td>
+                        <td>
+                            <h:outputText value="#{row.why}"></h:outputText>
                         </td>
                         <td>
                             <h:button value="show commentary" outcome="/event/show">
