@@ -1,7 +1,5 @@
 package akel.thesis.logic;
 
-import akel.thesis.model.EventEntity;
-
 import java.util.List;
 
 //イベントをルールに適応し、あっていれば解説を出力

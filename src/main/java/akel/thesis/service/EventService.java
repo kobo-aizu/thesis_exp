@@ -1,7 +1,5 @@
 package akel.thesis.service;
 
-import akel.thesis.model.EventEntity;
-
 import javax.ejb.Stateless;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

@@ -14,5 +14,10 @@
       <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
     </properties>
     <class>akel.thesis.model.EventEntity</class>
+    <class>akel.thesis.model.KnowledgeEntity</class>
+    <class>akel.thesis.model.ProblemEntity</class>
+    <class>akel.thesis.model.RuleEntity</class>
+    <class>akel.thesis.model.ScoreEntity</class>
+    <class>akel.thesis.model.TeamEntity</class>
   </persistence-unit>
 </persistence>

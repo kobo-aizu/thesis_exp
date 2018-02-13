@@ -1,6 +1,5 @@
 package akel.thesis.bean;
 
-import akel.thesis.model.EventEntity;
 import akel.thesis.service.EventService;
 
 import javax.ejb.EJB;

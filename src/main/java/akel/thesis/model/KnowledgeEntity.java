@@ -1,15 +1,11 @@
 package akel.thesis.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Basic;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "event", schema = "thesis")
-public class EventEntity{
+@Table(name = "knowledge", schema = "thesis", catalog = "")
+public class KnowledgeEntity{
     private Integer id;
     private String who;
     private String how;
@@ -82,7 +78,7 @@ public class EventEntity{
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
 
-        EventEntity that = (EventEntity) o;
+        KnowledgeEntity that = (KnowledgeEntity) o;
 
         if(id != null ? !id.equals(that.id) : that.id != null) return false;
         if(who != null ? !who.equals(that.who) : that.who != null) return false;
