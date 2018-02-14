@@ -25,7 +25,7 @@ public class Rule{
             commentary += "Accept this problem. \n";
             commentary += isFirstAccept(knowledge,knowledgeList);
             commentary += isContinuous(knowledge,knowledgeList);
-            commentary +=
+            commentary += isRankChanged(knowledge,knowledgeList);
         }
         return commentary;
     }
@@ -98,5 +98,17 @@ public class Rule{
 
             }
             return commentary;
+        }
+
+        public String isRankChanged(KnowledgeEntity knowledge,List<KnowledgeEntity> knowledgeList){
+            List<KnowledgeEntity> knowledgeListbyRank=new ArrayList<KnowledgeEntity>();
+            for(KnowledgeEntity e:knowledgeList){
+                if(e.getWho().equals(knowledge.getWho()) && e.knowledgeSource().equals("rank")) knowledgeListbyRank.add(e);
+            }
+            if(knowledgeListbyRank.isEmpty())return "";
+            for(KnowledgeEntity e:knowledgeListbyRank){
+                if(knowledge.getHow().equals(e.getWhy())) return "The rank has been raised by solving the problem\n.";
+            }
+            return "";
         }
 }
