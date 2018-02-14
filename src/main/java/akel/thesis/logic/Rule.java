@@ -25,7 +25,7 @@ public class Rule{
             commentary += "Accept this problem. \n";
             commentary += isFirstAccept(knowledge,knowledgeList);
             commentary += isContinuous(knowledge,knowledgeList);
-
+            commentary +=
         }
         return commentary;
     }
