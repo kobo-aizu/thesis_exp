@@ -8,10 +8,14 @@
 <body>
 <ui:composition template="/templates/layout.xhtml">
     <f:metadata>
-        <f:viewAction action="#{eventListBean.init}"></f:viewAction>
+        <f:viewAction action="#{knowledgeListBean.init}"></f:viewAction>
     </f:metadata>
     <ui:define name="page_title">Event Model List</ui:define>
     <ui:define name="content">
+        <div class="col-lg-12">
+            <h:button value="input event" outcome="/event/new">
+            </h:button>
+        </div>
         <table class="table">
             <tr>
                 <th>id</th>
@@ -21,7 +25,7 @@
                 <th>when</th>
                 <th>why</th>
             </tr>
-            <ui:repeat var="row" value="#{eventListBean.eventList}">
+            <ui:repeat var="row" value="#{knowledgeListBean.knowledgeList}">
                 <h:form>
                     <tr>
                         <td>
@@ -38,16 +42,10 @@
                             <h:outputText value="#{row.what}"></h:outputText>
                         </td>
                         <td>
-                            <h:outputText value="#{row.when}"></h:outputText>
+                            <h:outputText value="#{row.when_t}"></h:outputText>
                         </td>
                         <td>
                             <h:outputText value="#{row.why}"></h:outputText>
-                        </td>
-                        <td>
-                            <h:button value="show commentary" outcome="/event/show">
-                                <f:param name="id" value="#{row.id}"></f:param>
-                                <f:param name="who" value="#{row.who}"></f:param>
-                            </h:button>
                         </td>
                     </tr>
                 </h:form>

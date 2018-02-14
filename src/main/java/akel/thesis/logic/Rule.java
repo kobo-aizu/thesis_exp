@@ -5,7 +5,7 @@ import java.util.List;
 //イベントをルールに適応し、あっていれば解説を出力
 
 public class Rule{
-    public String genelateCommentary(EventEntity event, List<EventEntity> eventEntityList){
+    /**public String genelateCommentary(EventEntity event, List<EventEntity> eventEntityList){
         String commentary = "";
         commentary+=isContinuousAccept(event,eventEntityList);
         return commentary;
@@ -59,5 +59,5 @@ public class Rule{
             }
             return commentary;
         }
-
+**/
 }

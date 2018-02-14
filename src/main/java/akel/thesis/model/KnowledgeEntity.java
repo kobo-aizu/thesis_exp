@@ -4,17 +4,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "knowledge", schema = "thesis", catalog = "")
+@Table(name = "knowledge", schema = "thesis")
 public class KnowledgeEntity{
     private Integer id;
     private String who;
     private String how;
     private String what;
-    private Timestamp when;
+    private Timestamp when_t;
     private String why;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId(){
         return id;
     }
@@ -54,13 +55,13 @@ public class KnowledgeEntity{
     }
 
     @Basic
-    @Column(name = "when")
-    public Timestamp getWhen(){
-        return when;
+    @Column(name = "when_t")
+    public Timestamp getWhen_t(){
+        return when_t;
     }
 
-    public void setWhen(Timestamp when){
-        this.when = when;
+    public void setWhen_t(Timestamp when){
+        this.when_t = when;
     }
 
     @Basic
@@ -84,7 +85,7 @@ public class KnowledgeEntity{
         if(who != null ? !who.equals(that.who) : that.who != null) return false;
         if(how != null ? !how.equals(that.how) : that.how != null) return false;
         if(what != null ? !what.equals(that.what) : that.what != null) return false;
-        if(when != null ? !when.equals(that.when) : that.when != null) return false;
+        if(when_t != null ? !when_t.equals(that.when_t) : that.when_t != null) return false;
         if(why != null ? !why.equals(that.why) : that.why != null) return false;
 
         return true;
@@ -96,7 +97,7 @@ public class KnowledgeEntity{
         result = 31 * result + (who != null ? who.hashCode() : 0);
         result = 31 * result + (how != null ? how.hashCode() : 0);
         result = 31 * result + (what != null ? what.hashCode() : 0);
-        result = 31 * result + (when != null ? when.hashCode() : 0);
+        result = 31 * result + (when_t != null ? when_t.hashCode() : 0);
         result = 31 * result + (why != null ? why.hashCode() : 0);
         return result;
     }
