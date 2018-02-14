@@ -7,7 +7,6 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 @Named
 @ViewScoped

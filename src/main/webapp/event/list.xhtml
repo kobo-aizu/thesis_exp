@@ -47,6 +47,12 @@
                         <td>
                             <h:outputText value="#{row.why}"></h:outputText>
                         </td>
+
+                        <td>
+                            <h:button value="show commentary" outcome="/event/show" rendered="#{row.knowledgeSource().equals('submit')}">
+                                <f:param name="id" value="#{row.id}"></f:param>
+                            </h:button>
+                        </td>
                     </tr>
                 </h:form>
             </ui:repeat>

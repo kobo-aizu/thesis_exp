@@ -1,6 +1,7 @@
 package akel.thesis.service;
 
 import akel.thesis.model.KnowledgeEntity;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -32,6 +33,14 @@ public class KnowledgeService extends AbstractThesisService<KnowledgeEntity>{
         cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id)).orderBy(cb.desc(model.get("when")));
         return getEntityManager().createQuery(cq).getResultList();
 
+    }
+
+    public int countByIdandWho(int id ,String who){
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<KnowledgeEntity> cq = cb.createQuery(KnowledgeEntity.class);
+        Root<KnowledgeEntity> model = cq.from(KnowledgeEntity.class);
+        cq.where(cb.equal(model.get("who"),who),cb.equal(model.get("what"),"accept"),cb.lessThanOrEqualTo(model.get("id"),id));
+        return getEntityManager().createQuery(cq).getResultList().size();
     }
 
     @TransactionAttribute(value = TransactionAttributeType.REQUIRED)

@@ -101,4 +101,12 @@ public class KnowledgeEntity{
         result = 31 * result + (why != null ? why.hashCode() : 0);
         return result;
     }
+
+    public String knowledgeSource(){
+        if(!who.equals("")&&how.equals("")&&!what.equals("")&&why.equals("")) return "team";
+        if(!who.equals("")&&how.equals("")&&!what.equals("")&&!why.equals("")) return "rank";
+        if(!who.equals("")&&!how.equals("")&&!what.equals("")&&why.equals("")) return "submit";
+        return "error";
+    }
+
 }

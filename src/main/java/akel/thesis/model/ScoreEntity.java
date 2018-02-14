@@ -3,11 +3,11 @@ package akel.thesis.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "score", schema = "thesis", catalog = "")
+@Table(name = "score", schema = "thesis")
 public class ScoreEntity{
     private Integer id;
     private Integer getscore;
-    private TeamEntity teamByTeamId;
+    private String teamname;
 
     @Id
     @Column(name = "id")
@@ -26,7 +26,17 @@ public class ScoreEntity{
     }
 
     public void setGetscore(Integer getscore){
-        this.getscore = getscore;
+        this.getscore=getscore;
+    }
+
+    @Basic
+    @Column(name = "teamname")
+    public String getTeamname(){
+        return teamname;
+    }
+
+    public void setTeamname(String teamname){
+        this.teamname = teamname;
     }
 
     @Override
@@ -49,13 +59,4 @@ public class ScoreEntity{
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    public TeamEntity getTeamByTeamId(){
-        return teamByTeamId;
-    }
-
-    public void setTeamByTeamId(TeamEntity teamByTeamId){
-        this.teamByTeamId = teamByTeamId;
-    }
 }

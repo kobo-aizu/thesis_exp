@@ -12,7 +12,7 @@ import java.util.List;
 @ViewScoped
 public class KnowledgeListBean implements Serializable{
     @EJB
-    KnowledgeService knowledgeService;
+    private KnowledgeService knowledgeService;
 
     private List<KnowledgeEntity> knowledgeList;
 
