@@ -25,7 +25,7 @@ public class KnowledgeNewBean implements Serializable{
 
     public String registerKnowledge(){
         knowledgeService.register(knowledge);
-        return "/event/list.xhtml";
+        return "/event/list.xhtml?faces-redirect=true";
     }
 
     public KnowledgeEntity getKnowledge(){
