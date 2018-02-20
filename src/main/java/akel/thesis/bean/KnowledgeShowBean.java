@@ -2,11 +2,7 @@ package akel.thesis.bean;
 
 import akel.thesis.logic.Rule;
 import akel.thesis.model.KnowledgeEntity;
-import akel.thesis.model.TeamEntity;
 import akel.thesis.service.KnowledgeService;
-import akel.thesis.service.ProblemService;
-import akel.thesis.service.ScoreService;
-import akel.thesis.service.TeamService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -25,9 +21,6 @@ public class KnowledgeShowBean implements Serializable{
 
     @EJB
     private KnowledgeService knowledgeService;
-    @EJB
-    private TeamService teamService;
-
 
     public void init(){
         knowledge = knowledgeService.find(id);
@@ -55,32 +48,9 @@ public class KnowledgeShowBean implements Serializable{
         this.id = id;
     }
 
-
-    /**public String generateCommentary(KnowledgeEntity knowledge){
-        String commentary = "";
-        if(knowledge.getWhat().equals("reject")) return "This submit is rejected...";
-        else{
-            commentary += "Accept this problem. \n";
-            commentary += isFirstAccept(knowledge);
-
-        }
-        return commentary;
-    }
-
-    public String isFirstAccept(KnowledgeEntity knowledge){
-        String commentary ="";
-        TeamEntity team = teamService.findByName(knowledge.getWho());
-        int totalAccept=knowledgeService.countByIdandWho(knowledge.getId(),knowledge.getWho());
-        if(totalAccept==1){
-            commentary+="The first accept for WHO.\n" + team.getDescription() +"\n";
-        }
-        return commentary;
-    }**/
-
     public List<KnowledgeEntity> getKnowledgeList(){
         return knowledgeList;
     }
-
     public void setKnowledgeList(List<KnowledgeEntity> knowledgeList){
         this.knowledgeList = knowledgeList;
     }

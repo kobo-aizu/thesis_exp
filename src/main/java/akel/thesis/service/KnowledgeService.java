@@ -9,7 +9,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Stateless
 public class KnowledgeService extends AbstractThesisService<KnowledgeEntity>{
@@ -23,24 +22,6 @@ public class KnowledgeService extends AbstractThesisService<KnowledgeEntity>{
         Root<KnowledgeEntity> model = cq.from(KnowledgeEntity.class);
         cq.where(cb.equal(model.get("id"),id));
         return getEntityManager().createQuery(cq).getSingleResult();
-    }
-
-    //whoのそれまでのイベントを取得
-    public List<KnowledgeEntity> findByIdAndWho(int id, String who){
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<KnowledgeEntity> cq = cb.createQuery(KnowledgeEntity.class);
-        Root<KnowledgeEntity> model = cq.from(KnowledgeEntity.class);
-        cq.where(cb.equal(model.get("who"),who),cb.lessThan(model.get("id"),id)).orderBy(cb.desc(model.get("when")));
-        return getEntityManager().createQuery(cq).getResultList();
-
-    }
-
-    public int countByIdandWho(int id ,String who){
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<KnowledgeEntity> cq = cb.createQuery(KnowledgeEntity.class);
-        Root<KnowledgeEntity> model = cq.from(KnowledgeEntity.class);
-        cq.where(cb.equal(model.get("who"),who),cb.equal(model.get("what"),"accept"),cb.lessThanOrEqualTo(model.get("id"),id));
-        return getEntityManager().createQuery(cq).getResultList().size();
     }
 
     @TransactionAttribute(value = TransactionAttributeType.REQUIRED)

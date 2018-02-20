@@ -1,16 +1,6 @@
 package akel.thesis.logic;
 
 import akel.thesis.model.KnowledgeEntity;
-import akel.thesis.model.TeamEntity;
-import akel.thesis.service.KnowledgeService;
-import akel.thesis.service.ProblemService;
-import akel.thesis.service.ScoreService;
-import akel.thesis.service.TeamService;
-
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +16,7 @@ public class Rule{
             commentary += isFirstAccept(knowledge,knowledgeList);
             commentary += isContinuous(knowledge,knowledgeList);
             commentary += isRankChanged(knowledge,knowledgeList);
+            commentary += isFastAccept(knowledge,knowledgeList);
         }
         return commentary;
     }
@@ -46,15 +37,6 @@ public class Rule{
         }
         return commentary;
     }
-
-
-    /**public String genelateCommentary(EventEntity event, List<EventEntity> eventEntityList){
-        String commentary = "";
-        commentary+=isContinuousAccept(event,eventEntityList);
-        return commentary;
-    }
-    //連続で不正解を出さずに正解を出していたら出力する。Order
-     **/
 
     //連続で正解している回数or連続で不正解の回数を数えるて解説として出力(Order)
     public String isContinuous(KnowledgeEntity knowledge , List<KnowledgeEntity> knowledgeList){
@@ -110,5 +92,18 @@ public class Rule{
                 if(knowledge.getHow().equals(e.getWhy())) return "The rank has been raised by solving the problem\n.";
             }
             return "";
+        }
+
+        public String isFastAccept(KnowledgeEntity knowledge,List<KnowledgeEntity> knowledgeList){
+            List<KnowledgeEntity> knowledgeListbyWho = new ArrayList<KnowledgeEntity>();
+            for(KnowledgeEntity e:knowledgeList){
+                if(e.getId()==knowledge.getId()) break;
+                if(e.getWho().equals(knowledge.getWho()) && e.knowledgeSource().equals("submit") && e.getWhat().equals("accept")) knowledgeListbyWho.add(e);
+            }
+            if(knowledgeListbyWho.isEmpty()) return "";
+            Collections.reverse(knowledgeListbyWho);
+            System.out.println(knowledge.getWhen_t().getTime() - knowledgeListbyWho.get(0).getWhen_t().getTime());
+            if(knowledge.getWhen_t().getTime() - knowledgeListbyWho.get(0).getWhen_t().getTime() <  300000) return "This team is accepting the problem so fast!";
+            else return "";
         }
 }
